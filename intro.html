@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pirms sākam</title>
     <link rel="stylesheet" href="survey.css" />
+
 </head>
 
 <body>
@@ -31,39 +32,28 @@
 
     </div>
 
+    <script src="texts.js"></script>
     <script>
-        const age = sessionStorage.getItem('age_group');
+        const age = sessionStorage.getItem("age_group");
+        const lang = sessionStorage.getItem("language") || "lv";
 
         if (!age) {
-            window.location.href = 'into.html';
+            window.location.href = "start_age.html";
         }
 
-        const texts = {
-            "4-7": [
-                "Vari pastāstīt, kā Tu šeit jūties.",
-                "Un vari teikt, kā patiešām ir.",
-                "Ja Tu negribi atbildēt uz kādu no jautājumiem, droši neatbildi."
-            ],
-            "8-12": [
-                "Šeit Tu vari atbildēt tā, kā Tu patiešām jūties.",
-                "Nav pareizu vai nepareizu atbilžu.",
-                "Ja negribi atbildēt uz kādu jautājumu, Tu vari to izlaist."
-            ],
-            "13-18": [
-                "Šī anketa ir par Tavu pieredzi Bērna mājā.",
-                "Tu vari atbildēt godīgi - nav pareizu vai nepareizu atbilžu.",
-                "Ja nevēlies atbildēt uz kādu jautājumu, Tu droši vari to izlaist."
-            ]
-        };
+        const lines =
+            TEXTS?.[lang]?.intro?.[age] ||
+            TEXTS.lv.intro["8-12"];
 
-        const [l1, l2, l3] = texts[age];
+        document.getElementById("introLine1").textContent = lines[0];
+        document.getElementById("introLine2").textContent = lines[1];
+        document.getElementById("introLine3").textContent = lines[2];
 
-        document.getElementById('introLine1').textContent = l1;
-        document.getElementById('introLine2').textContent = l2;
-        document.getElementById('introLine3').textContent = l3;
+        const startBtn = document.getElementById("startSurvey");
+        startBtn.textContent = TEXTS[lang].common.start;
 
-        document.getElementById('startSurvey').addEventListener('click', () => {
-            window.location.href = 'index.html';
+        startBtn.addEventListener("click", () => {
+            window.location.href = "index.html"; 
         });
     </script>
 

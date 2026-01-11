@@ -141,6 +141,10 @@ body {
     align-items: center;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 /* zem burbiļa teksts */
 .bubble-label {
     margin-top: 0.5rem;
@@ -266,6 +270,57 @@ body {
 .skip-btn:hover {
     opacity: 1;
 }
+
+.slider-wrap {
+    max-width: 320px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #7a8f88;
+    margin-bottom: 0.3rem;
+}
+
+#safeSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right,
+            #e8b4a8,
+            #f1e8d2,
+            #bfe3c0);
+    outline: none;
+}
+
+/* slider */
+#safeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#safeSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.slider-hint {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #8c9c96;
+}
+
 
 
 /* adaptācija ekrāniem */

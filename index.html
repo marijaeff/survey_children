@@ -12,55 +12,76 @@
 
     <div class="app">
 
-        <!-- jautājumu kārts -->
+        <!-- jautājuma karte -->
         <div class="card">
-            <h1 id="question">
-                Kā Tu juties, esot Bērna mājā?
-            </h1>
 
-            <div class="bubble-options">
+            <!-- jautājuma teksts (ielādējas no texts.js) -->
+            <h1 id="question"></h1>
+
+            <!-- burbuļu atbildes -->
+            <div class="bubble-options" id="bubbleOptions">
+
                 <!-- labi -->
                 <div class="bubble-item">
-                    <button class="bubble good">
+                    <button class="bubble good" data-value="good">
                         <svg class="face" viewBox="0 0 100 100">
                             <path d="M30 55 Q50 70 70 55" />
                         </svg>
                     </button>
-                    <div class="bubble-label">Labi</div>
+                    <div class="bubble-label"></div>
                 </div>
-                <!-- Neitrāli -->
+
+                <!-- neitrāli -->
                 <div class="bubble-item">
-                    <button class="bubble neutral">
+                    <button class="bubble neutral" data-value="neutral">
                         <svg class="face" viewBox="0 0 100 100">
                             <path d="M30 60 Q50 60 70 60" />
                         </svg>
                     </button>
-                    <div class="bubble-label">Tā pa vidu</div>
+                    <div class="bubble-label"></div>
                 </div>
-                <!-- Slikti -->
+
+                <!-- slikti -->
                 <div class="bubble-item">
-                    <button class="bubble bad">
+                    <button class="bubble bad" data-value="bad">
                         <svg class="face" viewBox="0 0 100 100">
                             <path d="M30 65 Q50 50 70 65" />
                         </svg>
                     </button>
-                    <div class="bubble-label">Slikti</div>
+                    <div class="bubble-label"></div>
                 </div>
 
             </div>
+
+            <div class="slider-wrap" id="safeSliderWrap">
+
+            <div class="slider-labels">
+                <span class="slider-left">Nedroši</span>
+                <span class="slider-right">Droši</span>
+            </div>
+
+            <input type="range" min="1" max="10" step="1" value="5" id="safeSlider" />
+
+            <div class="slider-hint">
+                Ja gribi, vari parādīt precīzāk
+            </div>
         </div>
 
+        </div>
 
-        <!-- nav -->
+        <!-- navigācija -->
         <div class="nav">
-            <button id="nextBtn" disabled>Tālāk</button>
+            <button id="nextBtn" disabled></button>
         </div>
-        <button class="skip-btn" id="skipQuestion">
-            Izlaist šo jautājumu
-        </button>
+
+        <!-- izlaist jautājumu -->
+        <button class="skip-btn" id="skipQuestion"></button>
+
     </div>
 
+    <script src="texts.js"></script>
     <script src="survey.js"></script>
+
 </body>
 
 </html>
