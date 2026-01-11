@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="lv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bērna mājas anketa</title>
+    <link rel="stylesheet" href="survey.css" />
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- jautājumu kārts -->
+        <div class="card">
+            <h1 id="question">
+                Kā Tu juties, esot Bērna mājā?
+            </h1>
+
+            <div class="bubble-options">
+                <!-- labi -->
+                <div class="bubble-item">
+                    <button class="bubble good">
+                        <svg class="face" viewBox="0 0 100 100">
+                            <path d="M30 55 Q50 70 70 55" />
+                        </svg>
+                    </button>
+                    <div class="bubble-label">Labi</div>
+                </div>
+                <!-- Neitrāli -->
+                <div class="bubble-item">
+                    <button class="bubble neutral">
+                        <svg class="face" viewBox="0 0 100 100">
+                            <path d="M30 60 Q50 60 70 60" />
+                        </svg>
+                    </button>
+                    <div class="bubble-label">Tā pa vidu</div>
+                </div>
+                <!-- Slikti -->
+                <div class="bubble-item">
+                    <button class="bubble bad">
+                        <svg class="face" viewBox="0 0 100 100">
+                            <path d="M30 65 Q50 50 70 65" />
+                        </svg>
+                    </button>
+                    <div class="bubble-label">Slikti</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- nav -->
+        <div class="nav">
+            <button id="nextBtn" disabled>Tālāk</button>
+        </div>
+        <button class="skip-btn" id="skipQuestion">
+            Izlaist šo jautājumu
+        </button>
+    </div>
+
+    <script src="survey.js"></script>
+</body>
+
+</html>

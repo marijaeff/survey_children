@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="lv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pirms sākam</title>
+    <link rel="stylesheet" href="survey.css" />
+</head>
+
+<body>
+
+    <div class="app">
+
+        <div class="logo-wrapper">
+            <img src="/icon/logo.png" alt="Bērna māja" class="logo" />
+        </div>
+
+        <!-- ievads -->
+        <div class="card intro-card">
+            <h1>Čau!</h1>
+
+            <p class="intro-text" id="introLine1"></p>
+            <p class="intro-text" id="introLine2"></p>
+            <p class="intro-text" id="introLine3"></p>
+
+            <button id="startSurvey" class="primary-btn">
+                Sākt
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const age = sessionStorage.getItem('age_group');
+
+        if (!age) {
+            window.location.href = 'into.html';
+        }
+
+        const texts = {
+            "4-7": [
+                "Vari pastāstīt, kā Tu šeit jūties.",
+                "Un vari teikt, kā patiešām ir.",
+                "Ja Tu negribi atbildēt uz kādu no jautājumiem, droši neatbildi."
+            ],
+            "8-12": [
+                "Šeit Tu vari atbildēt tā, kā Tu patiešām jūties.",
+                "Nav pareizu vai nepareizu atbilžu.",
+                "Ja negribi atbildēt uz kādu jautājumu, Tu vari to izlaist."
+            ],
+            "13-18": [
+                "Šī anketa ir par Tavu pieredzi Bērna mājā.",
+                "Tu vari atbildēt godīgi - nav pareizu vai nepareizu atbilžu.",
+                "Ja nevēlies atbildēt uz kādu jautājumu, Tu droši vari to izlaist."
+            ]
+        };
+
+        const [l1, l2, l3] = texts[age];
+
+        document.getElementById('introLine1').textContent = l1;
+        document.getElementById('introLine2').textContent = l2;
+        document.getElementById('introLine3').textContent = l3;
+
+        document.getElementById('startSurvey').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>
