@@ -19,6 +19,12 @@ const TEXTS = {
         },
 
         questions: {
+            gender: {
+                "4-7": "Kas Tu esi?",
+                "8-12": "Kāds ir Tavs dzimums?",
+                "13-18": "Kāds ir Tavs dzimums?"
+            },
+
             felt_overall: {
                 "4-7": "Kā Tu juties Bērna mājā?",
                 "8-12": "Kā Tu kopumā juties Bērna mājā?",
@@ -28,32 +34,56 @@ const TEXTS = {
                 "4-7": "Vai Tev šeit bija droši?",
                 "8-12": "Vai Tu šeit juties droši?",
                 "13-18": "Cik droši Tu juties Bērna mājā?"
+            },
+
+            understood_process: {
+                "4-7": "Cik saprotami Tev pastāstīja, kas šeit notiks?",
+                "8-12": "Cik saprotami Tev pastāstīja, kas šeit notiks?",
+                "13-18": "Cik saprotami Tev paskaidroja, kas šeit notiks?"
             }
+
         },
 
         bubbles: {
+            gender: {
+                "4-7": ["Meitene", "Zēns", "Negribu teikt"],
+                "8-12": ["Meitene", "Zēns", "Negribu teikt"],
+                "13-18": ["Sieviete", "Vīrietis", "Negribu teikt"]
+            },
+
             felt_overall: {
                 "4-7": ["Labi", "Tā pa vidu", "Slikti"],
                 "8-12": ["Labi", "Normāli", "Slikti"],
                 "13-18": ["Labi", "Neitrāli", "Slikti"]
             },
             felt_safe: {
-                "4-7": ["Jā", "Nezinu", "Nē"],
-                "8-12": ["Jā", "Nezinu", "Nē"],
+                "4-7": ["Jā", "Vidēji", "Nē"],
+                "8-12": ["Jā", "Vidēji", "Nē"],
                 "13-18": ["Jā", "Daļēji", "Nē"]
             },
             understood_process: {
-                "4-7": ["Jā", "Mazliet", "Nē"],
-                "8-12": ["Jā", "Daļēji", "Nē"],
-                "13-18": ["Jā", "Daļēji", "Nē"]
+                "4-7": ["Ļoti saprotami", "Vidēji", "Nesaprotami"],
+                "8-12": ["Ļoti saprotami", "Daļēji saprotami", "Nesaprotami"]
             },
             staff_attitude: {
                 "4-7": ["Jā", "Nezinu", "Nē"],
                 "8-12": ["Jā", "Drīzāk jā", "Nē"],
                 "13-18": ["Jā", "Drīzāk jā", "Nē"]
             }
+
         },
 
+
+        slider_labels: {
+            felt_safe: {
+                left: "Nedroši",
+                right: "Droši"
+            },
+            understood_process: {
+                left: "Nesaprotami",
+                right: "Ļoti saprotami"
+            }
+        },
 
         common: {
             start: "Sākt",

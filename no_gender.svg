@@ -1,0 +1,4 @@
+<svg class="silhouette" viewBox="0 0 100 100">
+  <circle cx="50" cy="34" r="10" />
+  <path d="M38 78 Q50 62 62 78" />
+</svg>
