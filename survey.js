@@ -332,28 +332,63 @@ commentInput.addEventListener("input", () => {
 });
 
 // next
+function sendToSheetsAndFinish() {
+      fetch("https://script.google.com/macros/s/AKfycbx7eQvPippO1ndjOwrRRc_ajNhuKskI62DIT4Vxo5kTYQTDEJdF1d_LgMKVPsFvLhp6/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    submission_id: crypto.randomUUID(),
+    submission_date: new Date().toISOString(),
+    language: state.language,
+    age_group: state.age_group,
+
+    gender: state.answers.gender ?? null,
+    felt_overall: state.answers.felt_overall ?? null,
+
+    felt_safe_score: state.scores.felt_safe ?? null,
+    understood_process_score: state.scores.understood_process ?? null,
+    staff_attitude_score: state.scores.staff_attitude ?? null,
+    rooms_overall_score: state.scores.rooms_overall ?? null,
+
+    visited_waiting_room: state.rooms.waiting_room ?? null,
+    visited_interview_room: state.rooms.interview_room ?? null,
+    visited_medical_room: state.rooms.medical_room ?? null,
+    visited_specialist_room: state.rooms.specialist_room ?? null,
+
+    room_waiting_rating: state.rooms_ratings.waiting_room ?? null,
+    room_interview_rating: state.rooms_ratings.interview_room ?? null,
+    room_medical_rating: state.rooms_ratings.medical_room ?? null,
+    room_specialist_rating: state.rooms_ratings.specialist_room ?? null,
+
+    general_comment: state.answers.general_comment ?? null
+  })
+    }).finally(() => {
+        window.location.href =
+            "https://marijaeff.github.io/logo_BM/vote";
+    });
+}
+
+
+// next
 nextBtn.addEventListener("click", () => {
+    nextBtn.disabled = true; 
+
     state.currentQuestionIndex++;
 
     if (state.currentQuestionIndex < QUESTION_ORDER.length) {
+        nextBtn.disabled = false; 
         renderQuestion();
     } else {
-    console.log("Anketa pabeigta", state);
-
-    // TODO: sendToSheets(state);
-
-    setTimeout(() => {
-        window.location.href =
-            "https://marijaeff.github.io/logo_BM/vote";
-    }, 300);
-}
+        console.log("Anketa pabeigta", state);
+        sendToSheetsAndFinish();
+    }
 });
+
 
 // skip
 skipBtn.addEventListener("click", () => {
     const questionKey = getQuestionKey();
     state.answers[questionKey] = "skipped";
-    state.scores[questionKey] = null;
+    state.scores[questionKey] = "skipped";
 
     state.currentQuestionIndex++;
 
@@ -361,8 +396,11 @@ skipBtn.addEventListener("click", () => {
         renderQuestion();
     } else {
         console.log("Anketa pabeigta", state);
+        sendToSheetsAndFinish();
     }
 });
 
+
 // start
 renderQuestion();
+
