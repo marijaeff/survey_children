@@ -171,7 +171,7 @@ body {
     transform: translate(-50%, -50%);
     opacity: 0.25;
     display: block;
-     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
 }
 
 .face path {
@@ -322,11 +322,11 @@ body {
 }
 
 .room-slider::after {
-  content: "Ja gribi, vari pārādīt, kā Tev tur bija";
-  display: block;
-  font-size: 0.75rem;
-  opacity: 0.5;
-  margin-top: 4px;
+    content: "Ja gribi, vari pārādīt, kā Tev tur bija";
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-top: 4px;
 }
 
 .is-hidden {
@@ -359,19 +359,38 @@ body {
     margin-top: 1.5rem;
 }
 
-#nextBtn {
-    background: #e0a716;
+#nextBtn,
+.primary-btn,
+.age-options button {
+    background-color: #e0a716;
     border: none;
     border-radius: 8px;
-    padding: 0.7rem 1.4rem;
-    font-size: 16px;
+    padding: 0.8rem 1.5rem;
+
+    font-size: 18px;
+    font-weight: 600;
     color: #fff;
+
     cursor: pointer;
+    width: 100%;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.25s ease;
 }
 
-#nextBtn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+#nextBtn:hover,
+.primary-btn:hover,
+.age-options button:hover {
+    background-color: #d29500;
+}
+
+#nextBtn {
+    max-width: 280px;
+    margin: 1.5rem auto 0;
+    padding: 0.65rem 1.2rem;
+
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 /* start_page */
@@ -543,12 +562,12 @@ input[type="range"]::-moz-range-thumb {
 
 @media (min-width: 768px) {
     .app {
-        max-width: 720px;
+        max-width: 860px;
     }
 
     .card {
         padding: 3rem 3rem;
-        border-radius: 48px;
+        border-radius: 40px;
     }
 
     .card h1 {
@@ -557,12 +576,12 @@ input[type="range"]::-moz-range-thumb {
     }
 
     .bubble-options {
-        gap: 2.5rem;
+        gap: 2.8rem;
     }
 
     .bubble {
-        width: 84px;
-        height: 84px;
+        width: 90px;
+        height: 90px;
     }
 
     .bubble-label {
