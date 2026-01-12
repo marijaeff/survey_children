@@ -39,7 +39,7 @@ let state = {
 };
 
 if (!state.age_group) {
-    window.location.href = "start_age.html";
+    window.location.href = "index.html";
 }
 
 // Some DOM elementi

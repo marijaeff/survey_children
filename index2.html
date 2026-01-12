@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="lv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bērna mājas anketa</title>
+    <link rel="stylesheet" href="survey.css" />
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- jautājuma karte -->
+        <div class="card">
+
+            <!-- jautājuma teksts (ielādējas no texts.js) -->
+            <h1 id="question"></h1>
+
+            <!-- burbuļu atbildes -->
+            <div class="bubble-options" id="bubbleOptions">
+
+                <!-- slikti -->
+                <div class="bubble-item">
+                    <button class="bubble bad" data-value="bad">
+                        <img src="icon/no_gender.png" class="gender-icon" alt="" />
+                        <svg class="face" viewBox="0 0 100 100">
+                            <!-- acis -->
+                            <circle cx="40" cy="40" r="3.5" fill="#5a4a45" />
+                            <circle cx="60" cy="40" r="3.5" fill="#5a4a45" />
+
+                            <!-- skumjš -->
+                            <path d="M28 70 Q50 56 72 70" stroke="#5a4a45" stroke-width="3.5" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <div class="bubble-label"></div>
+                </div>
+
+                <!-- neitrāli -->
+                <div class="bubble-item">
+                    <button class="bubble neutral" data-value="neutral">
+                        <img src="icon/men.png" class="gender-icon" alt="" />
+                        <svg class="face" viewBox="0 0 100 100">
+                            <!-- acis -->
+                            <circle cx="40" cy="40" r="3.5" fill="#5a4a45" />
+                            <circle cx="60" cy="40" r="3.5" fill="#5a4a45" />
+
+                            <!-- neitrāls -->
+                            <path d="M32 60 L68 60" stroke="#5a4a45" stroke-width="3.5" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <div class="bubble-label"></div>
+                </div>
+
+                <!-- labi -->
+                <div class="bubble-item">
+                    <button class="bubble good" data-value="good">
+                        <img src="icon/women.png" class="gender-icon" alt="" />
+                        <svg class="face" viewBox="0 0 100 100">
+                            <!-- acis -->
+                            <circle cx="40" cy="40" r="3.5" fill="#5a4a45" />
+                            <circle cx="60" cy="40" r="3.5" fill="#5a4a45" />
+
+
+                            <!-- smaids -->
+                            <path d="M28 58 Q50 72 72 58" stroke="#5a4a45" stroke-width="3.5" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+
+
+
+
+                    </button>
+                    <div class="bubble-label"></div>
+                </div>
+
+
+            </div>
+
+            <div class="slider-wrap" id="safeSliderWrap">
+
+                <div class="slider-labels">
+                    <span class="slider-left">Nedroši</span>
+                    <span class="slider-right">Droši</span>
+                </div>
+
+                <input type="range" min="1" max="10" step="1" value="5" id="safeSlider" />
+
+                <div class="slider-hint">
+                    Ja gribi, vari parādīt precīzāk
+                </div>
+            </div>
+
+            <div class="comment-wrap is-hidden" id="commentWrap">
+                <textarea id="commentInput" rows="4" placeholder=""></textarea>
+            </div>
+            <!-- rooms block -->
+            <div id="roomsBlock" class="rooms-block is-hidden">
+
+                <div class="rooms-title" id="roomsTitle"></div>
+                <div class="rooms-hint" id="roomsHint"></div>
+
+                <div class="rooms-grid">
+
+                    <div class="room-card" data-room="waiting_room">
+                        <img src="icon/waiting_room.png" class="room-icon" alt="" />
+                        <div class="room-label"></div>
+
+                        <div class="room-slider">
+                            <div class="slider-labels">
+                                <span class="room-slider-left"></span>
+                                <span class="room-slider-right"></span>
+                            </div>
+                            <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="interview_room">
+                        <img src="icon/main_room.png" class="room-icon" alt="" />
+                        <div class="room-label"></div>
+                        <div class="room-slider">
+                            <div class="slider-labels">
+                                <span class="room-slider-left"></span>
+                                <span class="room-slider-right"></span>
+                            </div>
+                            <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="medical_room">
+                        <img src="icon/medical_room.png" class="room-icon" alt="" />
+                        <div class="room-label"></div>
+                        <div class="room-slider">
+                            <div class="slider-labels">
+                                <span class="room-slider-left"></span>
+                                <span class="room-slider-right"></span>
+                            </div>
+                            <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="specialist_room">
+                        <img src="icon/specialist_room.png" class="room-icon" alt="" />
+                        <div class="room-label"></div>
+                        <div class="room-slider">
+                            <div class="slider-labels">
+                                <span class="room-slider-left"></span>
+                                <span class="room-slider-right"></span>
+                            </div>
+                            <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- navigācija -->
+        <div class="nav">
+            <button id="nextBtn" disabled></button>
+        </div>
+
+        <!-- izlaist jautājumu -->
+        <button class="skip-btn" id="skipQuestion"></button>
+
+    </div>
+
+    <script src="texts.js"></script>
+    <script src="survey.js"></script>
+
+</body>
+
+</html>
