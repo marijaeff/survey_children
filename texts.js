@@ -67,27 +67,32 @@ const TEXTS = {
             },
 
             felt_overall: {
-                "4-7": ["Labi", "Tā pa vidu", "Slikti"],
-                "8-12": ["Labi", "Normāli", "Slikti"],
-                "13-18": ["Labi", "Neitrāli", "Slikti"]
+                "4-7": ["Slikti", "Tā pa vidu", "Labi"],
+                "8-12": ["Slikti", "Normāli", "Labi"],
+                "13-18": ["Slikti", "Neitrāli", "Labi"]
             },
+
             felt_safe: {
-                "4-7": ["Jā", "Vidēji", "Nē"],
-                "8-12": ["Jā", "Vidēji", "Nē"],
-                "13-18": ["Jā", "Daļēji", "Nē"]
+                "4-7": ["Nē", "Vidēji", "Jā"],
+                "8-12": ["Nē", "Vidēji", "Jā"],
+                "13-18": ["Nē", "Daļēji", "Jā"]
             },
+
             understood_process: {
-                "4-7": ["Ļoti saprotami", "Vidēji", "Nesaprotami"],
-                "8-12": ["Ļoti saprotami", "Daļēji saprotami", "Nesaprotami"]
+                "4-7": ["Nesaprotami", "Vidēji", "Ļoti saprotami"],
+                "8-12": ["Nesaprotami", "Daļēji saprotami", "Ļoti saprotami"]
             },
+
             staff_attitude: {
-                "4-7": ["Labi", "Nu tā nevisai", "Slikti"],
-                "8-12": ["Draudzīga", "Neitrāla", "Nedraudzīga"],
+                "4-7": ["Slikti", "Nu tā nevisai", "Labi"],
+                "8-12": ["Nedraudzīga", "Neitrāla", "Draudzīga"]
             },
+
             rooms_overall: {
-                "4-7": ["Labi", "Neitrāli", "Slikti"],
-                "8-12": ["Labi", "Neitrāli", "Slikti"]
+                "4-7": ["Slikti", "Neitrāli", "Labi"],
+                "8-12": ["Slikti", "Neitrāli", "Labi"]
             },
+
             comment_placeholder: {
                 "4-7": "Var palīdzēt pieaugušais",
                 "8-12": "Raksti šeit, ja gribi",
