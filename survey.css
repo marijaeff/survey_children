@@ -322,7 +322,7 @@ body {
 }
 
 .room-slider::after {
-    content: "Ja gribi, vari pārādīt, kā Tev tur bija";
+    content: "Ja gribi, vari pārādīt, kā Tev tur patika";
     display: block;
     font-size: 0.75rem;
     opacity: 0.5;
