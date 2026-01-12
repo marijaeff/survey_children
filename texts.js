@@ -40,6 +40,16 @@ const TEXTS = {
                 "4-7": "Cik saprotami Tev pastāstīja, kas šeit notiks?",
                 "8-12": "Cik saprotami Tev pastāstīja, kas šeit notiks?",
                 "13-18": "Cik saprotami Tev paskaidroja, kas šeit notiks?"
+            },
+            staff_attitude: {
+                "4-7": "Kā darbinieki izturējās pret Tevi?",
+                "8-12": "Kā Tu vērtē darbinieku attieksmi pret Tevi?",
+                "13-18": "Kā Tu vērtē darbinieku attieksmi pret Tevi?"
+            },
+            rooms_overall: {
+                "4-7": "Kā Tu kopumā vērtē telpas Bērna mājā?",
+                "8-12": "Kā Tu kopumā vērtē telpas Bērna mājā?",
+                "13-18": "Kā Tu kopumā vērtē telpas Bērna mājā?"
             }
 
         },
@@ -66,11 +76,13 @@ const TEXTS = {
                 "8-12": ["Ļoti saprotami", "Daļēji saprotami", "Nesaprotami"]
             },
             staff_attitude: {
-                "4-7": ["Jā", "Nezinu", "Nē"],
-                "8-12": ["Jā", "Drīzāk jā", "Nē"],
-                "13-18": ["Jā", "Drīzāk jā", "Nē"]
+                "4-7": ["Labi", "Nu tā nevisai", "Slikti"],
+                "8-12": ["Draudzīga", "Neitrāla", "Nedraudzīga"],
+            },
+            rooms_overall: {
+                "4-7": ["Labi", "Neitrāli", "Slikti"],
+                "8-12": ["Labi", "Neitrāli", "Slikti"]
             }
-
         },
 
 
@@ -82,6 +94,29 @@ const TEXTS = {
             understood_process: {
                 left: "Nesaprotami",
                 right: "Ļoti saprotami"
+            },
+            staff_attitude: {
+                left: "Nedraudzīga",
+                right: "Ļoti draudzīga"
+            },
+            rooms_overall: {
+                left: "Nepatīkamas",
+                right: "Ļoti patīkamas"
+            }
+        },
+
+        rooms: {
+            title: "Kurās telpās Tu biji?",
+            hint: "Vari izvēlēties vairākas",
+            labels: {
+                waiting_room: "Uzgaidāmā telpa",
+                interview_room: "Sarunu telpa",
+                medical_room: "Ārsta kabinets",
+                specialist_room: "Speciālista telpa"
+            },
+            slider: {
+                left: "Nepatika",
+                right: "Patika"
             }
         },
 

@@ -185,8 +185,8 @@ body {
 .gender-icon {
     display: none;
     position: absolute;
-  width: 62%;
-  height: 62%;
+    width: 62%;
+    height: 62%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -194,8 +194,7 @@ body {
     pointer-events: none;
 
     filter:
-    drop-shadow(0 1px 2px rgba(0,0,0,0.06))
-    blur(0.2px);
+        drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06)) blur(0.2px);
 }
 
 .gender-mode .face {
@@ -205,14 +204,14 @@ body {
 .gender-mode .bubble.good,
 .gender-mode .bubble.neutral,
 .gender-mode .bubble.bad {
-  background-color: #f3f6ef; 
+    background-color: #f3f6ef;
 }
 
 .gender-mode .bubble.selected {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 0 3px rgba(224, 167, 22, 0.6),
-    0 10px 20px rgba(0,0,0,0.15);
+    transform: scale(1.08);
+    box-shadow:
+        0 0 0 3px rgba(224, 167, 22, 0.6),
+        0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .gender-mode .bubble-label {
@@ -221,12 +220,71 @@ body {
 }
 
 .gender-mode .gender-icon {
-  display: block;
+    display: block;
 }
 
 .gender-mode .bubble-item:nth-child(3) {
-  display: none;
+    display: none;
 }
+
+/* rooms block */
+.rooms-block {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.rooms-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.rooms-hint {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.room-card {
+    min-height: 80px;
+    padding: 14px;
+    background: #f3f6ef;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.room-card:hover {
+    transform: scale(1.02);
+}
+
+.room-card.selected {
+    background: #e7efe6;
+    box-shadow: 0 0 0 2px rgba(120, 160, 140, 0.5);
+}
+
+.room-card.selected .room-slider {
+    display: block;
+}
+
+.room-slider {
+    display: none;
+    margin-top: 10px;
+    
+}
+
+.is-hidden {
+    display: none;
+}
+
 
 /* nav */
 .nav {
