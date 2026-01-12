@@ -4,7 +4,8 @@ const QUESTION_ORDER = [
     "felt_safe",
     "understood_process",
     "staff_attitude",
-    "rooms_overall"
+    "rooms_overall",
+    "general_comment"
 ];
 
 const SLIDER_QUESTIONS = ["felt_safe", "understood_process", "staff_attitude", "rooms_overall"];
@@ -57,6 +58,9 @@ const sliderRight = document.querySelector(".slider-right");
 const nextBtn = document.getElementById("nextBtn");
 const skipBtn = document.getElementById("skipQuestion");
 const roomsBlock = document.getElementById("roomsBlock");
+const commentWrap = document.getElementById("commentWrap");
+const commentInput = document.getElementById("commentInput");
+
 
 // helperi
 function getQuestionKey() {
@@ -137,6 +141,26 @@ function renderQuestion() {
     // reset UI
     resetUI();
 
+    
+
+    const isRoomsOverall = questionKey === "rooms_overall";
+    const hasRoomsAnswer =
+        state.scores.rooms_overall != null ||
+        state.answers.rooms_overall != null;
+
+    state.showRoomsBlock =
+        isRoomsOverall &&
+        hasRoomsAnswer &&
+        state.age_group !== "4-7";
+
+
+    if (state.showRoomsBlock) {
+        roomsBlock.classList.remove("is-hidden");
+        renderRoomsTexts();
+    } else {
+        roomsBlock.classList.add("is-hidden");
+    }
+
     if (questionKey === "gender") {
         bubblesWrap.classList.remove("is-hidden");
         sliderWrap.classList.add("is-hidden");
@@ -189,17 +213,32 @@ function renderQuestion() {
         state.showRoomsBlock = false;
         roomsBlock.classList.add("is-hidden");
     }
+
+    if (
+        getQuestionKey() === "general_comment" &&
+        state.age_group !== "4-7"
+    ) {
+        commentWrap.classList.remove("is-hidden");
+
+        // placeholder texts
+        if (TEXTS[state.language].comment_placeholder) {
+            commentInput.placeholder =
+                TEXTS[state.language].comment_placeholder[state.age_group] || "";
+        }
+
+        nextBtn.disabled = false;
+    } else {
+        commentWrap.classList.add("is-hidden");
+        commentInput.value = "";
+    }
+
 }
 
-
-// slider
-slider.addEventListener("input", (e) => {
-    e.stopPropagation();
-
-    const card = e.target.closest(".room-card");
-    const roomKey = card.dataset.room;
-
-    state.rooms_ratings[roomKey] = Number(e.target.value);
+slider.addEventListener("input", () => {
+    const questionKey = getQuestionKey();
+    state.scores[questionKey] = Number(slider.value);
+    nextBtn.disabled = false;
+    renderQuestion();
 });
 
 // telpu kartiņas
@@ -226,9 +265,9 @@ document.querySelectorAll(".room-card").forEach(card => {
 
 });
 
-document.querySelectorAll(".room-range").forEach(slider => {
+document.querySelectorAll(".room-range").forEach(roomSlider => {
 
-    slider.addEventListener("input", (e) => {
+    roomSlider.addEventListener("input", (e) => {
         e.stopPropagation();
 
         const card = e.target.closest(".room-card");
@@ -237,7 +276,7 @@ document.querySelectorAll(".room-range").forEach(slider => {
         state.rooms_ratings[roomKey] = Number(e.target.value);
     });
 
-    slider.addEventListener("click", (e) => {
+    roomSlider.addEventListener("click", (e) => {
         e.stopPropagation();
     });
 
@@ -264,14 +303,13 @@ bubbleButtons.forEach(bubble => {
         } else {
             state.answers[questionKey] = bubbleValue;
         }
-        if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
-            state.showRoomsBlock = true;
-            roomsBlock.classList.remove("is-hidden");
-            renderRoomsTexts();
-        }
-
         nextBtn.disabled = false;
+        renderQuestion();
     });
+});
+
+commentInput.addEventListener("input", () => {
+    state.answers.general_comment = commentInput.value;
 });
 
 // next

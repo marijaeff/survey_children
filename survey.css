@@ -285,6 +285,26 @@ body {
     display: none;
 }
 
+.comment-wrap {
+  margin-top: 16px;
+}
+
+/* comment box */
+
+.comment-wrap textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: none;
+  padding: 12px 14px;
+  font-size: 16px;
+  resize: none;
+  background: #f3f6f5;
+}
+
+.comment-wrap textarea:focus {
+  outline: none;
+}
+
 
 /* nav */
 .nav {

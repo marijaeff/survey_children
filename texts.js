@@ -50,7 +50,12 @@ const TEXTS = {
                 "4-7": "Kā Tu kopumā vērtē telpas Bērna mājā?",
                 "8-12": "Kā Tu kopumā vērtē telpas Bērna mājā?",
                 "13-18": "Kā Tu kopumā vērtē telpas Bērna mājā?"
-            }
+            },
+            general_comment: {
+                "4-7": "Ja gribi, vari kaut ko piebilst",
+                "8-12": "Ja gribi, vari kaut ko piebilst vai pastāstīt",
+                "13-18": "Ja vēlies, vari atstāt komentāru par savu pieredzi"
+            },
 
         },
 
@@ -82,6 +87,11 @@ const TEXTS = {
             rooms_overall: {
                 "4-7": ["Labi", "Neitrāli", "Slikti"],
                 "8-12": ["Labi", "Neitrāli", "Slikti"]
+            },
+            comment_placeholder: {
+                "4-7": "Var palīdzēt pieaugušais",
+                "8-12": "Raksti šeit, ja gribi",
+                "13-18": "Tavs komentārs (nav obligāti)"
             }
         },
 
