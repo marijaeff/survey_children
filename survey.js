@@ -338,9 +338,15 @@ nextBtn.addEventListener("click", () => {
     if (state.currentQuestionIndex < QUESTION_ORDER.length) {
         renderQuestion();
     } else {
-        console.log("Anketa pabeigta", state);
-        // TODO: pāreja uz nākamo soli / sūtīšana uz Sheets
-    }
+    console.log("Anketa pabeigta", state);
+
+    // TODO: sendToSheets(state);
+
+    setTimeout(() => {
+        window.location.href =
+            "https://marijaeff.github.io/logo_BM/vote";
+    }, 300);
+}
 });
 
 // skip
