@@ -117,7 +117,7 @@ const TEXTS = {
 
         rooms: {
             title: "Kurās telpās Tu biji?",
-            hint: "Vari izvēlēties vairākas",
+            hint: "Uzspied uz telpām, kurās Tu biji. Ja gribi, vari parādīt precīzāk, kā Tev tur bija",
             labels: {
                 waiting_room: "Uzgaidāmā telpa",
                 interview_room: "Sarunu telpa",

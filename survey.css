@@ -231,54 +231,99 @@ body {
 .rooms-block {
     margin-top: 24px;
     padding-top: 16px;
-    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
+/* Заголовок */
 .rooms-title {
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    color: #3f5b55;
 }
 
+/* Подсказка */
 .rooms-hint {
     font-size: 0.85rem;
     opacity: 0.6;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
+/* Сетка карточек */
 .rooms-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
 }
 
+/* Карточка комнаты */
 .room-card {
-    min-height: 80px;
-    padding: 14px;
-    background: #f3f6ef;
-    border-radius: 16px;
+    background: #f4f7f3;
+    border-radius: 18px;
+    padding: 14px 12px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+
+    border: 2px solid transparent;
 }
+
 
 .room-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+
 .room-card.selected {
-    background: #e7efe6;
-    box-shadow: 0 0 0 2px rgba(120, 160, 140, 0.5);
+    background: #eaf4ee;
+    border-color: rgba(120, 160, 140, 0.5);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+
+.room-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 6px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+.room-card:hover .room-icon {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.room-label {
+    font-size: 0.95rem;
+    color: #3f5b55;
+    margin-bottom: 6px;
+}
+
+.room-slider {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+    opacity: 0.85;
+    display: none;
 }
 
 .room-card.selected .room-slider {
     display: block;
 }
 
-.room-slider {
-    display: none;
-    margin-top: 10px;
-    
+.room-slider::after {
+  content: "Ja gribi, vari pārādīt, kā Tev tur bija";
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  margin-top: 4px;
 }
 
 .is-hidden {
@@ -286,23 +331,23 @@ body {
 }
 
 .comment-wrap {
-  margin-top: 16px;
+    margin-top: 16px;
 }
 
 /* comment box */
 
 .comment-wrap textarea {
-  width: 100%;
-  border-radius: 16px;
-  border: none;
-  padding: 12px 14px;
-  font-size: 16px;
-  resize: none;
-  background: #f3f6f5;
+    width: 100%;
+    border-radius: 16px;
+    border: none;
+    padding: 12px 14px;
+    font-size: 16px;
+    resize: none;
+    background: #f3f6f5;
 }
 
 .comment-wrap textarea:focus {
-  outline: none;
+    outline: none;
 }
 
 
@@ -448,6 +493,47 @@ body {
     color: #8c9c96;
 }
 
+/* room slider */
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(to right,
+            #f2c6b6 0%,
+            #f2c6b6 0%,
+            #cfead6 100%);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #e3b24b;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #e3b24b;
+    cursor: pointer;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #7c8f8a;
+    margin-bottom: 6px;
+}
 
 
 /* adaptācija ekrāniem */

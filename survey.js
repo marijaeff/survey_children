@@ -141,7 +141,15 @@ function renderQuestion() {
     // reset UI
     resetUI();
 
-    
+    if (questionKey === "general_comment") {
+        bubblesWrap.classList.add("is-hidden");
+        sliderWrap.classList.add("is-hidden");
+        roomsBlock.classList.add("is-hidden");
+
+        commentWrap.classList.remove("is-hidden");
+        nextBtn.disabled = false;
+        return;
+    }
 
     const isRoomsOverall = questionKey === "rooms_overall";
     const hasRoomsAnswer =
@@ -238,9 +246,13 @@ slider.addEventListener("input", () => {
     const questionKey = getQuestionKey();
     state.scores[questionKey] = Number(slider.value);
     nextBtn.disabled = false;
-    renderQuestion();
-});
 
+    if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
+        state.showRoomsBlock = true;
+        roomsBlock.classList.remove("is-hidden");
+        renderRoomsTexts();
+    }
+});
 // telpu kartiņas
 document.querySelectorAll(".room-card").forEach(card => {
     card.addEventListener("click", () => {
@@ -303,8 +315,15 @@ bubbleButtons.forEach(bubble => {
         } else {
             state.answers[questionKey] = bubbleValue;
         }
+
+        if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
+            state.showRoomsBlock = true;
+            roomsBlock.classList.remove("is-hidden");
+            renderRoomsTexts();
+        }
+
         nextBtn.disabled = false;
-        renderQuestion();
+
     });
 });
 
