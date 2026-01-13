@@ -152,6 +152,9 @@ function renderQuestion() {
 
     const questionKey = getQuestionKey();
 
+    state.showRoomsBlock = false;
+    hideRoomsBlock();
+
     // gender režīms
     card.classList.toggle("gender-mode", questionKey === "gender");
 
@@ -189,26 +192,6 @@ function renderQuestion() {
 
         nextBtn.disabled = false;
         return;
-        nextBtn.disabled = false;
-        return;
-    }
-
-    const isRoomsOverall = questionKey === "rooms_overall";
-    const hasRoomsAnswer =
-        state.scores.rooms_overall != null ||
-        state.answers.rooms_overall != null;
-
-    state.showRoomsBlock =
-        isRoomsOverall &&
-        hasRoomsAnswer &&
-        state.age_group !== "4-7";
-
-
-    if (state.showRoomsBlock) {
-        showRoomsBlockSmooth();
-        renderRoomsTexts();
-    } else {
-        hideRoomsBlock();
     }
 
     if (questionKey === "gender") {
@@ -279,15 +262,24 @@ function renderQuestion() {
     } else {
         commentWrap.classList.add("is-hidden");
     }
+    if (
+        questionKey === "rooms_overall" &&
+        state.showRoomsBlock &&
+        state.age_group !== "4-7"
+    ) {
+        showRoomsBlockSmooth();
+        renderRoomsTexts();
+    }
 
+    if (state.age_group === "4-7") {
+    state.showRoomsBlock = false;
+    roomsBlock.classList.add("is-hidden");
+}
 }
 
 commentInput.addEventListener("input", () => {
     state.answers.general_comment = commentInput.value.trim();
 });
-
-
-
 
 slider.addEventListener("input", () => {
     const questionKey = getQuestionKey();
@@ -295,11 +287,15 @@ slider.addEventListener("input", () => {
     nextBtn.disabled = false;
 
     if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
-        state.showRoomsBlock = true;
-        renderRoomsTexts();
-        renderQuestion();
+        if (!state.showRoomsBlock) {
+            state.showRoomsBlock = true;
+            showRoomsBlockSmooth();
+            renderRoomsTexts();
+        }
     }
 });
+
+
 // telpu kartiņas
 document.querySelectorAll(".room-card").forEach(card => {
     card.addEventListener("click", () => {
@@ -371,9 +367,12 @@ bubbleButtons.forEach(bubble => {
             }
         }
 
-        if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
-            state.showRoomsBlock = true;
-            renderQuestion();
+        if (questionKey === "rooms_overall" && state.age_group === "8-12") {
+            if (!state.showRoomsBlock) {
+                state.showRoomsBlock = true;
+                showRoomsBlockSmooth();
+                renderRoomsTexts();
+            }
         }
 
         nextBtn.disabled = false;
@@ -392,8 +391,6 @@ function showThankYou() {
 
     document.getElementById("thankYouScreen").classList.remove("is-hidden");
 }
-
-
 
 function sendToSheetsAndFinish() {
     if (isSubmitting) return;
@@ -445,7 +442,6 @@ function sendToSheetsAndFinish() {
         });
 }
 
-
 // next
 nextBtn.addEventListener("click", () => {
     nextBtn.disabled = true;
@@ -460,7 +456,6 @@ nextBtn.addEventListener("click", () => {
         sendToSheetsAndFinish();
     }
 });
-
 
 // skip
 skipBtn.addEventListener("click", () => {
@@ -478,5 +473,12 @@ skipBtn.addEventListener("click", () => {
     }
 });
 
+
 renderQuestion();
+
+requestAnimationFrame(() => {
+    document.body.classList.remove("is-page-entering");
+    document.body.classList.add("is-page-visible");
+});
+
 

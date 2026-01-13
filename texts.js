@@ -124,10 +124,10 @@ const TEXTS = {
             title: "Kurās telpās Tu biji?",
             hint: "Uzspied uz telpām, kurās Tu biji. Ja gribi, vari parādīt precīzāk, kā Tev tur bija",
             labels: {
-                waiting_room: "Uzgaidāmā telpa",
-                interview_room: "Sarunu telpa",
-                medical_room: "Ārsta kabinets",
-                specialist_room: "Speciālista telpa"
+                waiting_room: "Viesistaba",
+                interview_room: "Sarunu istaba",
+                medical_room: "Apskates istaba",
+                specialist_room: "Speciālistu istaba"
             },
             slider: {
                 left: "Nepatika",

@@ -52,6 +52,25 @@ body {
 }
 
 /* app */
+
+body.is-page-entering .app {
+    opacity: 0;
+}
+
+body.is-page-visible .app {
+  opacity: 1;
+  transition: opacity 0.04s linear;
+}
+
+body.is-page-leaving .app {
+  opacity: 0;
+  transition: opacity 0.04s linear;
+}
+
+body.is-page-entering .card {
+    opacity: 0;
+}
+
 .app {
     width: 100%;
     max-width: 420px;
@@ -293,7 +312,7 @@ body {
     padding: 14px 12px;
     text-align: center;
     cursor: pointer;
-
+    overflow: hidden;
     transition:
         background 0.2s ease,
         box-shadow 0.2s ease,
@@ -338,12 +357,14 @@ body {
 
 .room-slider {
     margin-top: 10px;
-    padding-top: 8px;
+    padding: 8px 12px;
     border-top: 1px dashed rgba(0, 0, 0, 0.08);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transform: translateY(-4px);
+    padding-left: 14px;
+    padding-right: 14px;
 
     transition:
         max-height 0.25s ease,
@@ -365,6 +386,10 @@ body {
     margin-top: 4px;
 }
 
+.room-slider input[type="range"] {
+    width: 100%;
+    box-sizing: border-box;
+}
 
 .comment-wrap {
     margin-top: 16px;
@@ -390,6 +415,13 @@ body {
 /* nav */
 .nav {
     margin-top: 1.5rem;
+}
+
+#nextBtn:disabled {
+    background-color: #e0a716;
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 #nextBtn,

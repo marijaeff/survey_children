@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body class="is-page-entering">
 
     <div class="app">
 
@@ -50,8 +50,20 @@
         const startBtn = document.getElementById("startSurvey");
         startBtn.textContent = TEXTS[lang].common.start;
 
+        requestAnimationFrame(() => {
+            document.body.classList.remove("is-page-entering");
+            document.body.classList.add("is-page-visible");
+        });
+
         startBtn.addEventListener("click", () => {
-            window.location.href = "survey.html"; 
+
+            document.body.classList.remove("is-page-visible");
+            document.body.classList.add("is-page-leaving");
+
+
+            setTimeout(() => {
+                window.location.href = "survey.html";
+            }, 80);
         });
     </script>
 
