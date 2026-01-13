@@ -62,7 +62,10 @@ const commentWrap = document.getElementById("commentWrap");
 const commentInput = document.getElementById("commentInput");
 
 
+
+
 // helperi
+
 function getQuestionKey() {
     return QUESTION_ORDER[state.currentQuestionIndex];
 }
@@ -111,6 +114,36 @@ function renderRoomsTexts() {
     });
 }
 
+function showRoomsBlockSmooth() {
+    roomsBlock.classList.remove("is-hidden");
+
+    roomsBlock.classList.add("is-animating");
+
+    requestAnimationFrame(() => {
+        roomsBlock.classList.add("is-visible");
+        roomsBlock.classList.remove("is-animating");
+    });
+}
+
+function transitionToNextQuestion() {
+    card.classList.add("is-fading-out");
+
+    setTimeout(() => {
+        renderQuestion();
+
+        card.classList.remove("is-fading-out");
+        card.classList.add("is-fading-in");
+
+        setTimeout(() => {
+            card.classList.remove("is-fading-in");
+        }, 250);
+    }, 200);
+}
+
+function hideRoomsBlock() {
+    roomsBlock.classList.remove("is-visible");
+    roomsBlock.classList.add("is-hidden");
+}
 
 function renderQuestion() {
     const age = state.age_group;
@@ -147,6 +180,15 @@ function renderQuestion() {
         roomsBlock.classList.add("is-hidden");
 
         commentWrap.classList.remove("is-hidden");
+
+        if (TEXTS[state.language].comment_placeholder) {
+            commentInput.placeholder =
+                TEXTS[state.language].comment_placeholder[state.age_group] || "";
+        }
+        commentInput.value = state.answers.general_comment || "";
+
+        nextBtn.disabled = false;
+        return;
         nextBtn.disabled = false;
         return;
     }
@@ -163,10 +205,10 @@ function renderQuestion() {
 
 
     if (state.showRoomsBlock) {
-        roomsBlock.classList.remove("is-hidden");
+        showRoomsBlockSmooth();
         renderRoomsTexts();
     } else {
-        roomsBlock.classList.add("is-hidden");
+        hideRoomsBlock();
     }
 
     if (questionKey === "gender") {
@@ -208,14 +250,13 @@ function renderQuestion() {
             nextBtn.disabled = false;
         }
     }
-    // parādīt/noslēpt telpu bloku
 
-    if (state.showRoomsBlock) {
-        roomsBlock.classList.remove("is-hidden");
-        renderRoomsTexts();
-    } else {
-        roomsBlock.classList.add("is-hidden");
+    const sliderHint = sliderWrap.querySelector(".slider-hint");
+    if (sliderHint) {
+        sliderHint.textContent =
+            TEXTS[state.language].slider_hint?.[state.age_group] || "";
     }
+    // īpašs gadījums - 4-7 gadi un telpas
 
     if (state.age_group === "4-7") {
         state.showRoomsBlock = false;
@@ -237,10 +278,16 @@ function renderQuestion() {
         nextBtn.disabled = false;
     } else {
         commentWrap.classList.add("is-hidden");
-        commentInput.value = "";
     }
 
 }
+
+commentInput.addEventListener("input", () => {
+    state.answers.general_comment = commentInput.value.trim();
+});
+
+
+
 
 slider.addEventListener("input", () => {
     const questionKey = getQuestionKey();
@@ -249,8 +296,8 @@ slider.addEventListener("input", () => {
 
     if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
         state.showRoomsBlock = true;
-        roomsBlock.classList.remove("is-hidden");
         renderRoomsTexts();
+        renderQuestion();
     }
 });
 // telpu kartiņas
@@ -326,8 +373,7 @@ bubbleButtons.forEach(bubble => {
 
         if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
             state.showRoomsBlock = true;
-            roomsBlock.classList.remove("is-hidden");
-            renderRoomsTexts();
+            renderQuestion();
         }
 
         nextBtn.disabled = false;
@@ -347,7 +393,7 @@ function showThankYou() {
     document.getElementById("thankYouScreen").classList.remove("is-hidden");
 }
 
-// next
+
 
 function sendToSheetsAndFinish() {
     if (isSubmitting) return;
@@ -408,7 +454,7 @@ nextBtn.addEventListener("click", () => {
 
     if (state.currentQuestionIndex < QUESTION_ORDER.length) {
         nextBtn.disabled = false;
-        renderQuestion();
+        transitionToNextQuestion();
     } else {
         console.log("Anketa pabeigta", state);
         sendToSheetsAndFinish();
@@ -425,14 +471,12 @@ skipBtn.addEventListener("click", () => {
     state.currentQuestionIndex++;
 
     if (state.currentQuestionIndex < QUESTION_ORDER.length) {
-        renderQuestion();
+        transitionToNextQuestion();
     } else {
         console.log("Anketa pabeigta", state);
         sendToSheetsAndFinish();
     }
 });
 
-
-// start
 renderQuestion();
 

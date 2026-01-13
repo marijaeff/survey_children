@@ -64,12 +64,26 @@ body {
     border-radius: 40px;
     padding: 2rem 1.5rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
 }
 
 .card h1 {
     font-size: 22px;
     color: #2f4037;
     margin-bottom: 2rem;
+}
+
+.card.is-fading-out {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.card.is-fading-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* bubbles */
@@ -237,7 +251,20 @@ body {
     border-top: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
-/* Заголовок */
+.rooms-block.is-animating {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+.rooms-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* Ievads */
 .rooms-title {
     font-size: 1rem;
     font-weight: 500;
@@ -245,21 +272,21 @@ body {
     color: #3f5b55;
 }
 
-/* Подсказка */
+/* Hints:) */
 .rooms-hint {
     font-size: 0.85rem;
     opacity: 0.6;
     margin-bottom: 14px;
 }
 
-/* Сетка карточек */
+/* kārtiņas */
 .rooms-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
 }
 
-/* Карточка комнаты */
+/* istabas kartiņa */
 .room-card {
     background: #f4f7f3;
     border-radius: 18px;
@@ -313,12 +340,21 @@ body {
     margin-top: 10px;
     padding-top: 8px;
     border-top: 1px dashed rgba(0, 0, 0, 0.08);
-    opacity: 0.85;
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+
+    transition:
+        max-height 0.25s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
 
 .room-card.selected .room-slider {
-    display: block;
+    max-height: 120px; 
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .room-slider::after {
@@ -329,9 +365,6 @@ body {
     margin-top: 4px;
 }
 
-.is-hidden {
-    display: none;
-}
 
 .comment-wrap {
     margin-top: 16px;
@@ -576,10 +609,6 @@ input[type="range"]::-moz-range-thumb {
 .thank-you-text {
   font-size: 16px;
   color: #555;
-}
-
-.is-hidden {
-  display: none;
 }
 
 

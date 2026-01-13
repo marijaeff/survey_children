@@ -139,6 +139,15 @@ const TEXTS = {
             start: "Sākt",
             next: "Tālāk",
             skip: "Izlaist šo jautājumu"
+        },
+
+        slider_hint: {
+            "8-12": "Ja gribi, vari parādīt precīzāk",
+            "13-18": "Atzīmē savu vērtējumu"
+        },
+
+        intro_title: {
+            lv: "Čau!",
         }
     }
 };
