@@ -58,13 +58,13 @@ body.is-page-entering .app {
 }
 
 body.is-page-visible .app {
-  opacity: 1;
-  transition: opacity 0.04s linear;
+    opacity: 1;
+    transition: opacity 0.04s linear;
 }
 
 body.is-page-leaving .app {
-  opacity: 0;
-  transition: opacity 0.04s linear;
+    opacity: 0;
+    transition: opacity 0.04s linear;
 }
 
 body.is-page-entering .card {
@@ -79,6 +79,8 @@ body.is-page-entering .card {
 
 /* card */
 .card {
+    display: flex;
+    flex-direction: column;
     background: #f1e8d2;
     border-radius: 40px;
     padding: 2rem 1.5rem;
@@ -373,7 +375,7 @@ body.is-page-entering .card {
 }
 
 .room-card.selected .room-slider {
-    max-height: 120px; 
+    max-height: 120px;
     opacity: 1;
     transform: translateY(0);
 }
@@ -413,6 +415,15 @@ body.is-page-entering .card {
 
 
 /* nav */
+
+.question-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: padding-bottom 0.25s ease;
+}
+
 .nav {
     margin-top: 1.5rem;
 }
@@ -451,7 +462,7 @@ body.is-page-entering .card {
 
 #nextBtn {
     max-width: 280px;
-    margin: 1.5rem auto 0;
+    margin: 0 auto;
     padding: 0.65rem 1.2rem;
 
     font-size: 16px;
@@ -623,24 +634,24 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .thank-you {
-  text-align: center;
-  padding: 2rem 1rem;
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
 .thank-you-logo {
-  max-width: 120px;
-  margin: 0 auto 1.5rem;
-  display: block;
+    max-width: 120px;
+    margin: 0 auto 1.5rem;
+    display: block;
 }
 
 .thank-you-title {
-  font-size: 24px;
-  margin-bottom: 1rem;
+    font-size: 24px;
+    margin-bottom: 1rem;
 }
 
 .thank-you-text {
-  font-size: 16px;
-  color: #555;
+    font-size: 16px;
+    color: #555;
 }
 
 
@@ -688,7 +699,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @media (max-width: 420px) {
- 
+
     .room-slider-left,
     .room-slider-right {
         font-size: 8px;
