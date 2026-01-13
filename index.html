@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="lv">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Izvēlies vecumu</title>
   <link rel="stylesheet" href="survey.css" />
 </head>
+
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <div class="card">
-    <h1>Izvēlies bērna vecumu</h1>
+    <div class="card">
+      <h1>Izvēlies bērna vecumu</h1>
 
-    <div class="age-options">
-      <button data-age="4-7">4–7 gadi</button>
-      <button data-age="8-12">8–12 gadi</button>
-      <button data-age="13-18">13–18 gadi</button>
+      <div class="age-options">
+        <button data-age="4-7">4–7 gadi</button>
+        <button data-age="8-12">8–12 gadi</button>
+        <button data-age="13-18">13–18 gadi</button>
+      </div>
     </div>
-  </div>
 
-</div>
-
-<script>
-  document.querySelectorAll('.age-options button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      sessionStorage.setItem('age_group', btn.dataset.age);
-      window.location.href = 'intro.html'; 
+  <script>
+    document.querySelectorAll('.age-options button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sessionStorage.setItem('age_group', btn.dataset.age);
+        window.location.href = 'intro.html';
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>

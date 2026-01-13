@@ -16,7 +16,7 @@ const BUBBLE_TO_SCORE = {
     staff_attitude: { good: 10, neutral: 5, bad: 0 },
     rooms_overall: { good: 10, neutral: 5, bad: 0 }
 };
-
+let isSubmitting = false;
 let state = {
     age_group: sessionStorage.getItem("age_group"),
     language: sessionStorage.getItem("language") || "lv",
@@ -313,7 +313,15 @@ bubbleButtons.forEach(bubble => {
                 slider.value = score;
             }
         } else {
-            state.answers[questionKey] = bubbleValue;
+            if (questionKey === "gender") {
+                const genderMap = {
+                    bad: "girl",
+                    neutral: "boy",
+                };
+                state.answers.gender = genderMap[bubbleValue] || null;
+            } else {
+                state.answers[questionKey] = bubbleValue;
+            }
         }
 
         if (questionKey === "rooms_overall" && state.age_group !== "4-7") {
@@ -327,55 +335,79 @@ bubbleButtons.forEach(bubble => {
     });
 });
 
-commentInput.addEventListener("input", () => {
-    state.answers.general_comment = commentInput.value;
-});
+function showThankYou() {
+
+    nextBtn.classList.add("is-hidden");
+    skipBtn.classList.add("is-hidden");
+
+    document.querySelectorAll(".card > *:not(#thankYouScreen)").forEach(el => {
+        el.classList.add("is-hidden");
+    });
+
+    document.getElementById("thankYouScreen").classList.remove("is-hidden");
+}
 
 // next
+
 function sendToSheetsAndFinish() {
-      fetch("https://script.google.com/macros/s/AKfycbx7eQvPippO1ndjOwrRRc_ajNhuKskI62DIT4Vxo5kTYQTDEJdF1d_LgMKVPsFvLhp6/exec", {
-  method: "POST",
-  body: JSON.stringify({
-    submission_id: crypto.randomUUID(),
-    submission_date: new Date().toISOString(),
-    language: state.language,
-    age_group: state.age_group,
+    if (isSubmitting) return;
+    isSubmitting = true;
 
-    gender: state.answers.gender ?? null,
-    felt_overall: state.answers.felt_overall ?? null,
+    nextBtn.disabled = true;
+    skipBtn.disabled = true;
+    nextBtn.textContent = "Nosūtām...";
 
-    felt_safe_score: state.scores.felt_safe ?? null,
-    understood_process_score: state.scores.understood_process ?? null,
-    staff_attitude_score: state.scores.staff_attitude ?? null,
-    rooms_overall_score: state.scores.rooms_overall ?? null,
+    const payload = {
+        submission_id: crypto.randomUUID(),
+        language: state.language,
+        age_group: state.age_group,
 
-    visited_waiting_room: state.rooms.waiting_room ?? null,
-    visited_interview_room: state.rooms.interview_room ?? null,
-    visited_medical_room: state.rooms.medical_room ?? null,
-    visited_specialist_room: state.rooms.specialist_room ?? null,
+        gender: state.answers.gender ?? null,
+        felt_overall: state.answers.felt_overall ?? null,
 
-    room_waiting_rating: state.rooms_ratings.waiting_room ?? null,
-    room_interview_rating: state.rooms_ratings.interview_room ?? null,
-    room_medical_rating: state.rooms_ratings.medical_room ?? null,
-    room_specialist_rating: state.rooms_ratings.specialist_room ?? null,
+        felt_safe_score: state.scores.felt_safe ?? null,
+        understood_process_score: state.scores.understood_process ?? null,
+        staff_attitude_score: state.scores.staff_attitude ?? null,
+        rooms_overall_score: state.scores.rooms_overall ?? null,
 
-    general_comment: state.answers.general_comment ?? null
-  })
-    }).finally(() => {
-        window.location.href =
-            "https://marijaeff.github.io/logo_BM/vote";
-    });
+        visited_waiting_room: state.rooms.waiting_room ?? null,
+        visited_interview_room: state.rooms.interview_room ?? null,
+        visited_medical_room: state.rooms.medical_room ?? null,
+        visited_specialist_room: state.rooms.specialist_room ?? null,
+
+        room_waiting_rating: state.rooms_ratings.waiting_room ?? null,
+        room_interview_rating: state.rooms_ratings.interview_room ?? null,
+        room_medical_rating: state.rooms_ratings.medical_room ?? null,
+        room_specialist_rating: state.rooms_ratings.specialist_room ?? null,
+
+        general_comment: state.answers.general_comment ?? null
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbyAzp57aozkt9GxSqZJbsOMYP2fz30jAs18zcC6_AlcOoWrM8EiDprqRGCpvR3RKe7U/exec", {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload)
+    })
+        .then(() => {
+            showThankYou();
+        })
+        .catch(() => {
+            nextBtn.textContent = "Kļūda, mēģini vēlreiz";
+            nextBtn.disabled = false;
+            skipBtn.disabled = false;
+            isSubmitting = false;
+        });
 }
 
 
 // next
 nextBtn.addEventListener("click", () => {
-    nextBtn.disabled = true; 
+    nextBtn.disabled = true;
 
     state.currentQuestionIndex++;
 
     if (state.currentQuestionIndex < QUESTION_ORDER.length) {
-        nextBtn.disabled = false; 
+        nextBtn.disabled = false;
         renderQuestion();
     } else {
         console.log("Anketa pabeigta", state);
