@@ -162,6 +162,33 @@ body.is-page-entering .card {
   opacity: 0.25;
 }
 
+/* hint for disabled buttons */
+.branch-btn[data-hint] {
+  position: relative;
+}
+
+/* tooltip */
+.branch-btn[data-hint]::after {
+  content: attr(data-hint);
+  position: absolute;
+  bottom: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  white-space: nowrap;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* show on hover */
+.branch-btn[data-hint]:hover::after {
+  opacity: 1;
+}
 
 
 /* bubbles */
@@ -777,5 +804,11 @@ input[type="range"]::-moz-range-thumb {
   .branch-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
+  }
+}
+
+@media (hover: none) {
+  .branch-btn[data-hint]::after {
+    opacity: 1;
   }
 }
