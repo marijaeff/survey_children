@@ -20,6 +20,11 @@
         <button data-lang="en" class="lang-btn">EN</button>
       </div>
 
+      <div class="admin-controls">
+        <button data-branch="riga" class="branch-btn active">Rīga</button>
+        <button data-branch="liepaja" class="branch-btn" disabled>Liepāja</button>
+      </div>
+
       <h1>Izvēlies bērna vecumu</h1>
 
       <div class="age-options">
@@ -30,6 +35,26 @@
     </div>
 
     <script>
+
+      if (!sessionStorage.getItem("branch")) {
+        sessionStorage.setItem("branch", "riga");
+      }
+
+      function updateBranchUI() {
+        const current = sessionStorage.getItem("branch");
+        document.querySelectorAll("[data-branch]").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.branch === current);
+        });
+      }
+
+      updateBranchUI();
+
+      document.querySelectorAll("[data-branch]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          sessionStorage.setItem("branch", btn.dataset.branch);
+          updateBranchUI();
+        });
+      });
 
       // noklusējuma valoda
       if (!sessionStorage.getItem("language")) {

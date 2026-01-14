@@ -19,6 +19,7 @@ const BUBBLE_TO_SCORE = {
 let isSubmitting = false;
 let state = {
     age_group: sessionStorage.getItem("age_group"),
+    branch: sessionStorage.getItem("branch") || null,
     language: sessionStorage.getItem("language") || "lv",
     currentQuestionIndex: 0,
     answers: {},
@@ -409,6 +410,7 @@ function sendToSheetsAndFinish() {
 
     const payload = {
         submission_id: crypto.randomUUID(),
+        branch: state.branch,
         language: state.language,
         age_group: state.age_group,
 
@@ -433,7 +435,7 @@ function sendToSheetsAndFinish() {
         general_comment: state.answers.general_comment ?? null
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbyAzp57aozkt9GxSqZJbsOMYP2fz30jAs18zcC6_AlcOoWrM8EiDprqRGCpvR3RKe7U/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzw8BNv_8gGjKgdT0hJcOOOSFUDk_C1qdjTscXX2nwPRbMSjR0ZEJTOBmF_KkFKBfAo/exec", {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify(payload)
