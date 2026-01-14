@@ -272,9 +272,9 @@ function renderQuestion() {
     }
 
     if (state.age_group === "4-7") {
-    state.showRoomsBlock = false;
-    roomsBlock.classList.add("is-hidden");
-}
+        state.showRoomsBlock = false;
+        roomsBlock.classList.add("is-hidden");
+    }
 }
 
 commentInput.addEventListener("input", () => {
@@ -385,9 +385,12 @@ function showThankYou() {
     nextBtn.classList.add("is-hidden");
     skipBtn.classList.add("is-hidden");
 
-    document.querySelectorAll(".card > *:not(#thankYouScreen)").forEach(el => {
-        el.classList.add("is-hidden");
-    });
+    document
+        .querySelectorAll(".question-content > *:not(#thankYouScreen)")
+        .forEach(el => {
+            el.classList.add("is-hidden");
+        });
+
 
     document.getElementById("thankYouScreen").classList.remove("is-hidden");
 }
