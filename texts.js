@@ -184,7 +184,7 @@ const TEXTS = {
             },
 
             felt_overall: {
-                "4-7": "Как ты себя чувствовал(а) в Доме для ребёнка?",
+                "4-7": "Как ты себя чувствовал(а) в Доме для ребёнка (Bērna mājā)?",
                 "8-12": "Как ты в целом себя чувствовал(а) в Доме для ребёнка?",
                 "13-18": "Как ты в целом себя чувствовал(а) в Доме для ребёнка?"
             },
@@ -192,7 +192,7 @@ const TEXTS = {
             felt_safe: {
                 "4-7": "Было ли тебе здесь безопасно?",
                 "8-12": "Чувствовал(а) ли ты себя здесь в безопасности?",
-                "13-18": "Насколько безопасно ты себя чувствовал(а) в Доме ребёнка?"
+                "13-18": "Насколько безопасно ты себя чувствовал(а) в Доме ребёнка (Bērna mājā)?"
             },
 
             understood_process: {
@@ -208,9 +208,9 @@ const TEXTS = {
             },
 
             rooms_overall: {
-                "4-7": "Как тебе понравились комнаты в Доме для ребёнка?",
-                "8-12": "Как ты в целом оцениваешь помещения в Доме для ребёнка?",
-                "13-18": "Как ты в целом оцениваешь помещения в Доме для ребёнка?"
+                "4-7": "Как тебе понравились комнаты в Доме для ребёнка (Bērna mājā)?",
+                "8-12": "Как ты в целом оцениваешь помещения в Доме для ребёнка (Bērna mājā)?",
+                "13-18": "Как ты в целом оцениваешь помещения в Доме для ребёнка (Bērna mājā)?"
             },
 
             general_comment: {
@@ -315,5 +315,166 @@ const TEXTS = {
             title: "Спасибо тебе!",
             text: "Твой ответ важен и помогает нам становиться лучше."
         }
+    },
+
+    en: {
+        intro: {
+            "4-7": [
+                "We would like to know how you felt today at the Child’s House.",
+                "There are no right or wrong answers.",
+                "If you don’t want to answer a question, that’s okay — you can skip it :)"
+            ],
+            "8-12": [
+                "It is important for us to know how you felt at the Child’s House.",
+                "There are no right or wrong answers.",
+                "If you don’t want to answer a question, you can safely skip it."
+            ],
+            "13-18": [
+                "This survey is about your experience at the Child’s House. It is anonymous.",
+                "You can answer honestly — there are no right or wrong answers.",
+                "If you don’t want to answer a question, you can calmly skip it."
+            ]
+        },
+
+        questions: {
+            gender: {
+                "4-7": "Who are you?",
+                "8-12": "What is your gender?",
+                "13-18": "What is your gender?"
+            },
+
+            felt_overall: {
+                "4-7": "How did you feel at the Child’s House?",
+                "8-12": "How did you feel overall at the Child’s House?",
+                "13-18": "How did you feel overall at the Child’s House?"
+            },
+
+            felt_safe: {
+                "4-7": "Did you feel safe here?",
+                "8-12": "Did you feel safe here?",
+                "13-18": "How safe did you feel at the Child’s House (Bērna māja)?"
+            },
+
+            understood_process: {
+                "4-7": "Did you understand what would happen here?",
+                "8-12": "How clearly was it explained what would happen here?",
+                "13-18": "How clearly was it explained what would happen here?"
+            },
+
+            staff_attitude: {
+                "4-7": "How did the staff treat you?",
+                "8-12": "How do you rate the staff’s attitude toward you?",
+                "13-18": "How do you rate the staff’s attitude toward you?"
+            },
+
+            rooms_overall: {
+                "4-7": "How did you like the rooms at the Child’s House (Bērna māja)?",
+                "8-12": "How do you rate the rooms at the Child’s House (Bērna māja) overall?",
+                "13-18": "How do you rate the rooms at the Child’s House (Bērna māja) overall?"
+            },
+
+            general_comment: {
+                "4-7": "If you want, you can add something",
+                "8-12": "If you want, you can add something or tell us what we could do better",
+                "13-18": "If you want, you can leave a comment about your experience or tell us what we could do better"
+            }
+        },
+
+        bubbles: {
+            gender: {
+                "4-7": ["Girl", "Boy", "I don’t want to say"],
+                "8-12": ["Girl", "Boy", "I don’t want to say"],
+                "13-18": ["Female", "Male", "I don’t want to say"]
+            },
+
+            felt_overall: {
+                "4-7": ["Bad", "So-so", "Good"],
+                "8-12": ["Bad", "Okay", "Good"],
+                "13-18": ["Bad", "Neutral", "Good"]
+            },
+
+            felt_safe: {
+                "4-7": ["No", "A little", "Yes"],
+                "8-12": ["No", "A little", "Yes"],
+                "13-18": ["No", "Partly", "Yes"]
+            },
+
+            understood_process: {
+                "4-7": ["Not clear", "So-so", "Very clear"],
+                "8-12": ["Not clear", "Partly clear", "Very clear"]
+            },
+
+            staff_attitude: {
+                "4-7": ["Bad", "Not very good", "Good"],
+                "8-12": ["Unfriendly", "Neutral", "Friendly"]
+            },
+
+            rooms_overall: {
+                "4-7": ["Bad", "Neutral", "Good"],
+                "8-12": ["Bad", "Neutral", "Good"]
+            },
+
+            comment_placeholder: {
+                "4-7": "An adult can help",
+                "8-12": "Write here if you want",
+                "13-18": "Your comment (optional)"
+            }
+        },
+
+        slider_labels: {
+            felt_safe: {
+                left: "Unsafe",
+                right: "Safe"
+            },
+            understood_process: {
+                left: "Not clear",
+                right: "Very clear"
+            },
+            staff_attitude: {
+                left: "Unfriendly",
+                right: "Very friendly"
+            },
+            rooms_overall: {
+                left: "Unpleasant",
+                right: "Very pleasant"
+            }
+        },
+
+        rooms: {
+            title: "Which rooms were you in?",
+            hint: "Tap the rooms you were in. If you want, you can show more precisely how you felt there",
+            labels: {
+                waiting_room: "Living room",
+                interview_room: "Interview room",
+                medical_room: "Medical room",
+                specialist_room: "Specialists’ room"
+            },
+            slider: {
+                left: "Did not like",
+                right: "Liked"
+            }
+        },
+
+        common: {
+            start: "Start",
+            next: "Next",
+            skip: "Skip this question",
+            sending: "Sending..."
+        },
+
+        slider_hint: {
+            "8-12": "You can show more precisely",
+            "13-18": "You can mark your answer"
+        },
+
+        intro_title: {
+            en: "Hi!"
+        },
+
+        thank_you: {
+            title: "Thank you!",
+            text: "Your answer is important and helps us become better."
+        }
     }
+
 };
