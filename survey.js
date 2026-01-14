@@ -381,6 +381,10 @@ bubbleButtons.forEach(bubble => {
 });
 
 function showThankYou() {
+    const t = TEXTS[state.language]?.thank_you || TEXTS.lv.thank_you;
+
+    document.getElementById("thankYouTitle").textContent = t.title;
+    document.getElementById("thankYouText").textContent = t.text;
 
     nextBtn.classList.add("is-hidden");
     skipBtn.classList.add("is-hidden");
@@ -391,7 +395,6 @@ function showThankYou() {
             el.classList.add("is-hidden");
         });
 
-
     document.getElementById("thankYouScreen").classList.remove("is-hidden");
 }
 
@@ -401,7 +404,8 @@ function sendToSheetsAndFinish() {
 
     nextBtn.disabled = true;
     skipBtn.disabled = true;
-    nextBtn.textContent = "Nosūtām...";
+    nextBtn.textContent =
+        TEXTS[state.language]?.common?.sending || "Nosūtām...";
 
     const payload = {
         submission_id: crypto.randomUUID(),

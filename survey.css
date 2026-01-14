@@ -107,6 +107,32 @@ body.is-page-entering .card {
     transform: translateY(0);
 }
 
+/* index language */
+.admin-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.lang-btn {
+  background: none;
+  border: 2px solid #e0a716;
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-weight: 600;
+  color: #2f4037;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.lang-btn.active {
+  background: #e0a716;
+  color: white;
+  opacity: 1;
+}
+
+
 /* bubbles */
 .bubble-options {
     display: flex;

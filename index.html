@@ -13,6 +13,12 @@
   <div class="app">
 
     <div class="card">
+
+      <div class="admin-controls">
+        <button data-lang="lv" class="lang-btn active">LV</button>
+        <button data-lang="ru" class="lang-btn">RU</button>
+      </div>
+
       <h1>Izvēlies bērna vecumu</h1>
 
       <div class="age-options">
@@ -23,6 +29,28 @@
     </div>
 
     <script>
+
+      // noklusējuma valoda
+      if (!sessionStorage.getItem("language")) {
+        sessionStorage.setItem("language", "lv");
+      }
+      // atjaunina valodas pogu stāvokli
+      function updateLangUI() {
+        const current = sessionStorage.getItem("language");
+        document.querySelectorAll("[data-lang]").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.lang === current);
+        });
+      }
+
+      updateLangUI();
+      // pievieno notikumu klausītājus valodas pogām
+      document.querySelectorAll("[data-lang]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          sessionStorage.setItem("language", btn.dataset.lang);
+          updateLangUI();
+        });
+      });
+
 
       document.body.classList.add("is-page-entering");
 
