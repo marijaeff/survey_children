@@ -435,7 +435,7 @@ function sendToSheetsAndFinish() {
         general_comment: state.answers.general_comment ?? null
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbzw8BNv_8gGjKgdT0hJcOOOSFUDk_C1qdjTscXX2nwPRbMSjR0ZEJTOBmF_KkFKBfAo/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxlRSb_qLXVmyyJP61DcTMVK6OqA4jppjsi0YrRpL2hCc3AgjiK2ZfZ8T2OdPFZMzOu/exec", {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify(payload)
