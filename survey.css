@@ -115,7 +115,6 @@ body.is-page-entering .card {
     margin-bottom: 1rem;
 }
 
-
 .lang-btn,
 .branch-btn {
     background: transparent;
@@ -274,12 +273,10 @@ body.is-page-entering .card {
     user-select: none;
 }
 
-
 .bubble.selected+.bubble-label {
     opacity: 1;
     font-weight: 600;
 }
-
 
 /* "face" - smile */
 .face {
@@ -419,7 +416,6 @@ body.is-page-entering .card {
     border: 2px solid transparent;
 }
 
-
 .room-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -432,7 +428,6 @@ body.is-page-entering .card {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-
 .room-icon {
     width: 52px;
     height: 52px;
@@ -440,7 +435,6 @@ body.is-page-entering .card {
     opacity: 0.75;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 
 .room-card:hover .room-icon {
     opacity: 1;

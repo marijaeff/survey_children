@@ -7,7 +7,7 @@ const TEXTS = {
                 "Ja negribi atbildēt uz kādu jautājumu - tas ir pilnīgi normāli un Tu to vari izlaist:)",
             ],
             "8-12": [
-                "Mums ir svarīgi zināt, kā Tev bija Bērna mājā.",
+                "Mums ir svarīgi zināt, kā Tev gāja Bērna mājā.",
                 "Nav pareizu vai nepareizu atbilžu.",
                 "Ja nevēlies atbildēt uz kādu jautājumu, Tu vari to izlaist."
             ],

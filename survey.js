@@ -17,6 +17,7 @@ const BUBBLE_TO_SCORE = {
     rooms_overall: { good: 10, neutral: 5, bad: 0 }
 };
 let isSubmitting = false;
+
 let state = {
     age_group: sessionStorage.getItem("age_group"),
     branch: sessionStorage.getItem("branch") || null,
@@ -295,7 +296,6 @@ slider.addEventListener("input", () => {
         }
     }
 });
-
 
 // telpu kartiņas
 document.querySelectorAll(".room-card").forEach(card => {
