@@ -930,6 +930,9 @@ input[type="range"]:focus::-moz-range-thumb {
         font-size: 9px;
         line-height: 1.2;
     }
+    .slider-wrap {
+    width: 100%;
+}
 }
 
 @media (max-width: 480px) {
