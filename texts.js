@@ -75,22 +75,25 @@ const TEXTS = {
             felt_safe: {
                 "4-7": ["Nē", "Vidēji", "Jā"],
                 "8-12": ["Nē", "Vidēji", "Jā"],
-                "13-18": ["Nē", "Daļēji", "Jā"]
+                "13-18": ["Nedroši", "Daļēji droši", "Droši"]
             },
 
             understood_process: {
                 "4-7": ["Nesaprotami", "Vidēji", "Ļoti saprotami"],
-                "8-12": ["Nesaprotami", "Daļēji saprotami", "Ļoti saprotami"]
+                "8-12": ["Nesaprotami", "Daļēji saprotami", "Ļoti saprotami"],
+                "13-18": ["Nesaprotami", "Daļēji saprotami", "Ļoti saprotami"]
             },
 
             staff_attitude: {
                 "4-7": ["Slikti", "Nu tā nevisai", "Labi"],
-                "8-12": ["Nedraudzīga", "Neitrāla", "Draudzīga"]
+                "8-12": ["Nedraudzīga", "Neitrāla", "Draudzīga"],
+                "13-18": ["Nedraudzīga", "Neitrāla", "Draudzīga"]
             },
 
             rooms_overall: {
                 "4-7": ["Slikti", "Neitrāli", "Labi"],
-                "8-12": ["Slikti", "Neitrāli", "Labi"]
+                "8-12": ["Slikti", "Neitrāli", "Labi"],
+                "13-18": ["Slikti", "Neitrāli", "Labi"]
             },
 
             comment_placeholder: {
@@ -122,16 +125,21 @@ const TEXTS = {
 
         rooms: {
             title: "Kurās telpās Tu biji?",
-            hint: "Uzspied uz telpām, kurās Tu biji. Ja gribi, vari parādīt precīzāk, kā Tev tur bija",
+            hint: "Uzspied uz telpām, kurās Tu biji. Ja gribi, vari parādīt precīzāk, kā Tev tur patika",
             labels: {
                 waiting_room: "Viesistaba",
-                interview_room: "Sarunu istaba",
-                medical_room: "Apskates istaba",
-                specialist_room: "Speciālistu istaba"
+                interview_room: "Sarunas istaba",
+                medical_room: "Medicīniskā istaba",
+                specialist_room: "Novērošanas istaba"
             },
             slider: {
                 left: "Nepatika",
-                right: "Patika"
+                right: "Patika",
+                hint: {
+                    "4-7": "Ja gribi, vari parādīt, kā Tev tur patika",
+                    "8-12": "Ja vēlies, vari parādīt precīzāk",
+                    "13-18": "Ja vēlies, vari novērtēt precīzāk"
+                },
             }
         },
 
@@ -144,7 +152,7 @@ const TEXTS = {
 
         slider_hint: {
             "8-12": "Ja gribi, vari parādīt precīzāk",
-            "13-18": "Atzīmē savu vērtējumu"
+            "13-18": "Ja gribi, vari parādīt precīzāk"
         },
 
         intro_title: {
@@ -185,8 +193,8 @@ const TEXTS = {
 
             felt_overall: {
                 "4-7": "Как ты себя чувствовал(а) в Доме для ребёнка (Bērna mājā)?",
-                "8-12": "Как ты в целом себя чувствовал(а) в Доме для ребёнка?",
-                "13-18": "Как ты в целом себя чувствовал(а) в Доме для ребёнка?"
+                "8-12": "Как ты в целом себя чувствовал(а) в Доме для ребёнка (Bērna mājā)?",
+                "13-18": "Как ты в целом себя чувствовал(а) в Доме для ребёнка (Bērna mājā)?"
             },
 
             felt_safe: {
@@ -287,11 +295,16 @@ const TEXTS = {
                 waiting_room: "Гостиная",
                 interview_room: "Комната для беседы",
                 medical_room: "Медицинский кабинет",
-                specialist_room: "Кабинет специалистов"
+                specialist_room: "Кабинет специалистов/наблюдения"
             },
             slider: {
                 left: "Не понравилось",
-                right: "Понравилось"
+                right: "Понравилось",
+                hint: {
+                    "4-7": "Если хочешь, можешь показать, как тебе там понравилось",
+                    "8-12": "Если хочешь, можешь показать точнее",
+                    "13-18": "Если хочешь, можешь показать точнее"
+                },
             }
         },
 
@@ -451,7 +464,12 @@ const TEXTS = {
             },
             slider: {
                 left: "Did not like",
-                right: "Liked"
+                right: "Liked",
+                hint: {
+                    "4-7": "If you want, you can show how much you liked it there",
+                    "8-12": "If you want, you can show it more precisely",
+                    "13-18": "If you wish, you can give a more precise rating"
+                },
             }
         },
 

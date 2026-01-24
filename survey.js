@@ -63,6 +63,9 @@ const roomsBlock = document.getElementById("roomsBlock");
 const commentWrap = document.getElementById("commentWrap");
 const commentInput = document.getElementById("commentInput");
 
+const progressStepsWrap = document.getElementById("progressSteps");
+
+
 
 
 
@@ -85,6 +88,42 @@ function resetUI() {
     slider.value = 5;
 }
 
+function attachSliderValue(slider, valueEl) {
+    if (slider.dataset.hasValueHandler) return;
+    slider.dataset.hasValueHandler = "true";
+
+    const min = Number(slider.min);
+    const max = Number(slider.max);
+
+    function update() {
+        const value = Number(slider.value);
+        valueEl.textContent = value;
+
+        const percent = (value - min) / (max - min);
+        const sliderWidth = slider.offsetWidth;
+        const thumbSize = 20;
+
+        const left =
+            percent * (sliderWidth - thumbSize) + thumbSize / 2;
+
+        valueEl.style.left = `${left}px`;
+        valueEl.style.opacity = 1;
+    }
+    function hide() {
+        setTimeout(() => {
+            valueEl.style.opacity = 0;
+        }, 300);
+    }
+
+    // Parādīt kustības laikā
+    slider.addEventListener("input", update);
+
+    // Paslēpt, kad kustība beigusies
+    slider.addEventListener("change", hide);
+    slider.addEventListener("pointerup", hide);
+}
+
+
 function applySliderLabels(t, questionKey) {
     // ja labeles definētas tekstos
     if (t.slider_labels && t.slider_labels[questionKey]) {
@@ -102,6 +141,13 @@ function renderRoomsTexts() {
     const hintEl = document.getElementById("roomsHint");
     if (titleEl) titleEl.textContent = t.rooms.title || "";
     if (hintEl) hintEl.textContent = t.rooms.hint || "";
+    const sliderHintText =
+        t.rooms?.slider?.hint?.[state.age_group] || "";
+
+    document.querySelectorAll(".room-slider-hint").forEach(el => {
+        el.textContent = sliderHintText;
+    });
+
 
     document.querySelectorAll(".room-card").forEach(card => {
         const key = card.dataset.room;
@@ -142,6 +188,31 @@ function transitionToNextQuestion() {
     }, 200);
 }
 
+function initProgressSteps() {
+    progressStepsWrap.innerHTML = "";
+
+    QUESTION_ORDER.forEach(() => {
+        const step = document.createElement("div");
+        step.className = "progress-step";
+        progressStepsWrap.appendChild(step);
+    });
+}
+
+
+function updateProgressSteps() {
+    const steps = progressStepsWrap.children;
+
+    Array.from(steps).forEach((step, index) => {
+        step.classList.remove("active", "completed");
+
+        if (index < state.currentQuestionIndex) {
+            step.classList.add("completed");
+        } else if (index === state.currentQuestionIndex) {
+            step.classList.add("active");
+        }
+    });
+}
+
 function hideRoomsBlock() {
     roomsBlock.classList.remove("is-visible");
     roomsBlock.classList.add("is-hidden");
@@ -153,6 +224,8 @@ function renderQuestion() {
     const t = TEXTS[lang];
 
     const questionKey = getQuestionKey();
+    updateProgressSteps();
+
 
     state.showRoomsBlock = false;
     hideRoomsBlock();
@@ -203,18 +276,33 @@ function renderQuestion() {
     }
 
     // ja jautājums ir slider + bubbles
+
     if (SLIDER_QUESTIONS.includes(questionKey)) {
         if (age === "4-7") {
+            // Mazākajiem – tikai bublīši
             bubblesWrap.classList.remove("is-hidden");
-        } else if (age === "8-12") {
+
+        } else if (age === "8-12" || age === "13-18") {
+            // Vidējiem un vecākajiem – bublīši + slīdnis
             bubblesWrap.classList.remove("is-hidden");
-            sliderWrap.classList.remove("is-hidden");
-        } else if (age === "13-18") {
             sliderWrap.classList.remove("is-hidden");
         }
-    } else {
+    }
+    else {
         // parāda tikai bublīšus
         bubblesWrap.classList.remove("is-hidden");
+    }
+
+    // Inicializēt skaitļa rādītāju virs slīdņa
+    if (!sliderWrap.classList.contains("is-hidden")) {
+        const safeSliderValue = document.getElementById("safeSliderValue");
+
+        if (slider && safeSliderValue) {
+            attachSliderValue(slider, safeSliderValue);
+
+            // Sākumā paslēpt vērtību (parādās tikai kustības laikā)
+            safeSliderValue.style.opacity = 0;
+        }
     }
 
     // atjaunot saglabāto atbildi, ja tāda ir
@@ -397,6 +485,7 @@ function showThankYou() {
         });
 
     document.getElementById("thankYouScreen").classList.remove("is-hidden");
+    progressStepsWrap.classList.add("is-hidden");
 }
 
 function sendToSheetsAndFinish() {
@@ -482,7 +571,7 @@ skipBtn.addEventListener("click", () => {
     }
 });
 
-
+initProgressSteps();
 renderQuestion();
 
 requestAnimationFrame(() => {

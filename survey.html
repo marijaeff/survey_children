@@ -11,7 +11,8 @@
 <body class="is-page-entering">
 
     <div class="app">
-
+        <!-- progresa līnija -->
+        <div class="progress-steps" id="progressSteps"></div>
         <!-- jautājuma karte -->
         <div class="card">
             <div class="question-content">
@@ -75,18 +76,23 @@
                     </div>
 
                 </div>
-
                 <div class="slider-wrap" id="safeSliderWrap">
 
-                    <div class="slider-labels">
-                        <span class="slider-left">Nedroši</span>
-                        <span class="slider-right">Droši</span>
+                    <div class="slider-hint"></div>
+
+                    <div class="slider-track">
+                        <div class="slider-value" id="safeSliderValue"></div>
+                        <input type="range" min="1" max="10" step="1" value="5" id="safeSlider" />
                     </div>
 
-                    <input type="range" min="1" max="10" step="1" value="5" id="safeSlider" />
+                    <div class="slider-labels">
+                        <span class="slider-left"></span>
+                        <span class="slider-right"></span>
+                    </div>
 
-                    <div class="slider-hint"></div>
                 </div>
+
+
 
                 <div class="comment-wrap is-hidden" id="commentWrap">
                     <textarea id="commentInput" rows="4" placeholder=""></textarea>
@@ -108,8 +114,12 @@
                                     <span class="room-slider-left"></span>
                                     <span class="room-slider-right"></span>
                                 </div>
+
                                 <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+                                
+                                <div class="room-slider-hint"></div>
                             </div>
+                            
                         </div>
 
                         <div class="room-card" data-room="interview_room">
@@ -121,6 +131,8 @@
                                     <span class="room-slider-right"></span>
                                 </div>
                                 <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+
+                                <div class="room-slider-hint"></div>
                             </div>
                         </div>
 
@@ -133,6 +145,8 @@
                                     <span class="room-slider-right"></span>
                                 </div>
                                 <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+
+                                <div class="room-slider-hint"></div>
                             </div>
                         </div>
 
@@ -145,6 +159,8 @@
                                     <span class="room-slider-right"></span>
                                 </div>
                                 <input type="range" min="1" max="10" step="1" value="5" class="room-range" />
+
+                                <div class="room-slider-hint"></div>
                             </div>
                         </div>
 
