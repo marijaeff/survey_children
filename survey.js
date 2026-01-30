@@ -456,7 +456,7 @@ bubbleButtons.forEach(bubble => {
             }
         }
 
-        if (questionKey === "rooms_overall" && state.age_group === "8-12") {
+        if (questionKey === "rooms_overall" && (state.age_group === "8-12" || state.age_group === "13-18")) {
             if (!state.showRoomsBlock) {
                 state.showRoomsBlock = true;
                 showRoomsBlockSmooth();
